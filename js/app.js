@@ -51,7 +51,13 @@ Player.prototype.handleInput = function () { };
 // Place the player object in a variable called player
 let allEnemies = []; 
 
-let player = new Player(200, 300, 50);
+let player = new Player(200, 300, 50); // velocity is 50 so player is always center of blocks
+let enemyPositions = [50, 150, 250]; // positions that will be set for enemies
+
+enemyPositions.forEach((y) => {
+    let enemy = new Enemy(0, y, 100); // enemies start left side and go right at 100 speed
+    allEnemies = allEnemies.concat([enemy]);
+});
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
