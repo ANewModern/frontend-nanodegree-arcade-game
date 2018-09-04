@@ -38,29 +38,29 @@ const Player = function (posX, posY, velocity) {
     this.sprite = 'images/char-boy.png';
 };
 
-Player.prototype.update = function () {};
+Player.prototype.update = function () { };
 
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function () {};
+Player.prototype.handleInput = function () { };
 
-    // Now instantiate your objects.
-    // Place all enemy objects in an array called allEnemies
-    // Place the player object in a variable called player
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+// Place the player object in a variable called player
 
 
 
-    // This listens for key presses and sends the keys to your
-    // Player.handleInput() method. You don't need to modify this.
-    document.addEventListener('keyup', function (e) {
-        var allowedKeys = {
-            37: 'left',
-            38: 'up',
-            39: 'right',
-            40: 'down'
-        };
+// This listens for key presses and sends the keys to your
+// Player.handleInput() method. You don't need to modify this.
+document.addEventListener('keyup', function (e) {
+    var allowedKeys = {
+        37: 'left',
+        38: 'up',
+        39: 'right',
+        40: 'down'
+    };
 
-        player.handleInput(allowedKeys[e.keyCode]);
-    });
+    player.handleInput(allowedKeys[e.keyCode]);
+});
