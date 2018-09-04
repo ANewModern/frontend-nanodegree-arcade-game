@@ -50,13 +50,13 @@ Player.prototype.handleInput = function (keyPress) {
             this.x -= this.vel + 50;
             break;
         case 'up':
-            this.y -= this.vel + 50;
+            this.y -= this.vel + 35;
             break;
         case 'right':
             this.x += this.vel + 50;
             break;
         case 'down':
-            this.y += this.vel + 50;
+            this.y += this.vel + 35;
             break;
         default:
             break;
