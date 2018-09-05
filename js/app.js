@@ -38,7 +38,12 @@ const Player = function (posX, posY, velocity) {
     this.sprite = 'images/char-boy.png';
 };
 
-Player.prototype.update = function () { };
+Player.prototype.update = function () { 
+    this.y = this.y > 380 ? 380 : this.y; // for when the player tries to leave the bottom of the map
+    this.x = this.x > 400 ? 400 : this.x; // for when the player tries to leave right of the map
+    this.x = this.x < 0 ? 0 : this.x; // for when the player tries to leave left of the map
+    [this.x, this.y] = this.y < 0 ? [200, 300] : [this.x, this.y]; // for when the player reaches the top of the map
+};
 
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
