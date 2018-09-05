@@ -22,6 +22,13 @@ Enemy.prototype.update = function (dt) {
     // checks if the enemy is beyond the map, if it is, it resets position and velocity
     [this.x, this.vel] = this.x > 550 ? [-100, 100 + Math.floor(Math.random() * 300)] : [this.x, this.vel];
 
+    if (player.x < this.x + 60 && // checks to see if the player is in the radius of an enemy
+        player.x > this.x - 40 &&
+        player.y < this.y + 25 &&
+        player.y > this.y - 25) {
+        player.x = 200;
+        player.y = 300;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -52,7 +59,7 @@ Player.prototype.render = function () {
 };
 
 Player.prototype.handleInput = function (keyPress) {
-    switch (keyPress) {
+    switch (keyPress) { // controls the player input for moving the player
         case 'left':
             this.x -= this.vel + 50;
             break;
@@ -75,11 +82,11 @@ Player.prototype.handleInput = function (keyPress) {
 // Place the player object in a variable called player
 let allEnemies = [];
 
-let player = new Player(200, 300, 50); // velocity is 50 so player is always center of blocks
-let enemyPositions = [60, 140, 220]; // positions that will be set for enemies
+const player = new Player(200, 300, 50); // velocity is 50 so player is always center of blocks
+const enemyPositions = [60, 140, 220]; // positions that will be set for enemies
 
 enemyPositions.forEach((y) => { // we apply the enemy positions and concat them to the allEnemies array
-    let enemy = new Enemy(0, y, 100 + Math.floor(Math.random() * 300)); // enemies start left side and go right at 100 speed
+    let enemy = new Enemy(0, y, 100 + Math.floor(Math.random() * 300)); // enemies start left side and go right at a random velocity
     allEnemies = allEnemies.concat([enemy]);
 });
 
