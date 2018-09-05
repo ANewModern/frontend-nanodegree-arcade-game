@@ -19,6 +19,8 @@ Enemy.prototype.update = function (dt) {
     // all computers.
     this.x += this.vel * dt; // position = velocity * time
 
+    // checks if the enemy is beyond the map, if it is, it resets position and velocity
+    [this.x, this.vel] = this.x > 550 ? [-100, 100 + Math.floor(Math.random() * 300)] : [this.x, this.vel];
 
 };
 
